@@ -1,5 +1,13 @@
 @import "bootstrap";
 
+/* navbar background-color (overwriting bootstrap)*/
+.navbar{
+  .navbar-inner{
+    background-color: #000033;
+    background-image: none;
+  }
+}
+
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
