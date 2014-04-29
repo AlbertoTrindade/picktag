@@ -5,6 +5,8 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        <span class="profile-info"><%= "Email: " + @user.email %></span>
+      	<span class="profile-info"><%= "Reputation: #{@user.reputation}" %></span>
       </h1>
     </section>
   </aside>
