@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20140428195432) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.string   "remember_token"
     t.float    "reputation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token"
   end
 
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
