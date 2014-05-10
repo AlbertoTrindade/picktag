@@ -77,4 +77,17 @@ Picktag::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # AWS configuration variables
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['picktag'],
+      :access_key_id => ENV['AKIAIEDJTJKE2GMWTCJA'],
+      :secret_access_key => ENV['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']
+    },
+    :url => ':s3_domain_url',
+    :path => '/:class/:attachment/:id_partition/:style/:filename'
+  }  
+
 end
