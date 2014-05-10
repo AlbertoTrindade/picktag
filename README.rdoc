@@ -1,28 +1,3 @@
-== README
+== PickTag
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+PickTag is a project developed for the Web Programming class at UW-Madison. It allows the users to search for images using tags or keywords, and they can upload their own images. We employ a reputation system to improve the quality of the search results, and encourage the users to post pictures.
