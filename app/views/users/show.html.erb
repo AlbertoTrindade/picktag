@@ -17,6 +17,11 @@
         <%= render @images %>
       </ol>
       <%= will_paginate @images %>
+    <% else %>
+      <% if current_user?(@user) %>
+        <h3>You have not uploaded any image</h3>
+        <%= link_to "Upload new image", upload_path, class: "btn btn-large btn-primary" %>  
+      <% end %>
     <% end %>
   </div>
 </div>
