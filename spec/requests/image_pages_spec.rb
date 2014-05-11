@@ -24,7 +24,11 @@ describe "Image pages" do
 
     describe "with valid information" do
 
-      before { fill_in 'image_tag', with: "Lorem ipsum" }
+      before do
+        fill_in 'image_tag', with: "Lorem ipsum"
+        attach_file 'image_img', Rails.root + "app/assets/images/rails.png"
+      end
+
       it "should create an image" do
         expect { click_button "Upload" }.to change(Image, :count).by(1)
       end

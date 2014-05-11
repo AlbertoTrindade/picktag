@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Image do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @image = user.images.build(tag: "Lorem ipsum") }
+  before { @image = user.images.build(tag: "Lorem ipsum",
+                                      img: File.new(Rails.root + 'app/assets/images/rails.png')) }
 
   subject { @image }
 

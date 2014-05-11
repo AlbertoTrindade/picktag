@@ -41,4 +41,8 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Capybara::DSL
+
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/system"])
+  end
 end
