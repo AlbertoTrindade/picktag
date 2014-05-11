@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
   validates :tag, presence: true, length: { maximum: 30 }
   validates :user_id, presence: true
   validates :img, presence: true
+  validates :rating, presence:true
 
   has_attached_file :img, styles: {
   	square: '200x200#',

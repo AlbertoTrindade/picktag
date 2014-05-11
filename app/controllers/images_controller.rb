@@ -7,6 +7,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = current_user.images.build(image_params)
+    @image.rating = 0
     if @image.save
       flash[:success] = "Image uploaded!"
       redirect_to current_user

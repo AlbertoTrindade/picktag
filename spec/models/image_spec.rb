@@ -4,11 +4,14 @@ describe Image do
 
   let(:user) { FactoryGirl.create(:user) }
   before { @image = user.images.build(tag: "Lorem ipsum",
-                                      img: File.new("#{Rails.root}/app/assets/images/rails.png")) }
+                                      img: File.new("#{Rails.root}/app/assets/images/rails.png"),
+                                      rating: 0) }
 
   subject { @image }
 
   it { should respond_to(:tag) }
+  it { should respond_to(:img) }
+  it { should respond_to(:rating) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
   its(:user) { should eq user }

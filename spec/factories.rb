@@ -10,6 +10,7 @@ FactoryGirl.define do
   factory :image do
     tag "Lorem ipsum"
     img File.new("#{Rails.root}/app/assets/images/rails.png")
+    rating 0
     user
   end
 end
