@@ -10,6 +10,7 @@ gem 'pg', '0.15.1'
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
+  gem 'idkfa'
 end
 
 group :test do
@@ -27,7 +28,7 @@ gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 
-gem 'paperclip'
+gem 'paperclip', "~> 4.1"
 gem 'aws-sdk'
 
 group :doc do

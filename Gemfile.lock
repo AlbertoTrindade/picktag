@@ -82,6 +82,7 @@ GEM
       multi_json (~> 1.3)
     hike (1.2.3)
     i18n (0.6.9)
+    idkfa (0.0.3)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
     jquery-rails (3.0.4)
@@ -191,9 +192,10 @@ DEPENDENCIES
   cucumber-rails (= 1.4.0)
   database_cleaner!
   factory_girl_rails (= 4.2.1)
+  idkfa
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
-  paperclip
+  paperclip (~> 4.1)
   pg (= 0.15.1)
   rails (= 4.0.2)
   rails_12factor (= 0.0.2)

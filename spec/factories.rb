@@ -6,4 +6,9 @@ FactoryGirl.define do
     password_confirmation "12345678"
     reputation    0
   end
+
+  factory :image do
+    tag "Lorem ipsum"
+    user
+  end
 end

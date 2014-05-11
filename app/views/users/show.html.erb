@@ -10,4 +10,10 @@
       </h1>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.images.any? %>
+      <h3>Images you have uploaded (<%= @user.images.count %>)</h3>
+      <%= image_tag @user.images[@user.images.count-1].img.url(:square) %>
+    <% end %>
+  </div>
 </div>

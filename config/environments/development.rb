@@ -27,6 +27,8 @@ Picktag::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  Idkfa.load_keys Rails.env, credentials: Rails.root.join('config', 's3.yml')
+
   # AWS configuration variables
   config.paperclip_defaults = {
     :storage => :s3,
