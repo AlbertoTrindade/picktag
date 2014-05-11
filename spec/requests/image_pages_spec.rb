@@ -26,7 +26,7 @@ describe "Image pages" do
 
       before do
         fill_in 'image_tag', with: "Lorem ipsum"
-        attach_file 'image_img', Rails.root + "app/assets/images/rails.png"
+        attach_file 'image_img', "#{Rails.root}/app/assets/images/rails.png"
       end
 
       it "should create an image" do
