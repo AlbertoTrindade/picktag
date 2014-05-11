@@ -1,5 +1,13 @@
-<div class="row">
-    <aside class="span4">
-      <%= link_to "Upload new image", upload_path, class: "btn btn-large btn-primary" %>
-    </aside>   
-  </div>
+<div class="center hero-unit">
+  <h1>Welcome to the PickTag</h1>
+  <h2>
+  	Search for pictures or upload a new one!
+  </h2>
+   
+  <%= form_for Image.new do |f| %>
+    <%= f.text_field :tag %>
+    <%= link_to "Upload new image", upload_path, class: "btn btn-large btn-primary" %>  
+    <%= link_to "Search images", '#', class: "btn btn-large btn-primary" %> 
+  <% end %>
+      
+ </div>

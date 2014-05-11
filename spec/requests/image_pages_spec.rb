@@ -34,4 +34,16 @@ describe "Image pages" do
       end
     end
   end
+
+  describe "image destruction" do
+    before { FactoryGirl.create(:image, user: user) }
+
+    describe "as correct user" do
+      before { visit user_path(user) }
+
+      it "should delete a image" do
+        expect { click_link "delete" }.to change(Image, :count).by(-1)
+      end
+    end
+  end
 end

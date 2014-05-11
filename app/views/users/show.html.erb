@@ -12,8 +12,11 @@
   </aside>
   <div class="span8">
     <% if @user.images.any? %>
-      <h3>Images you have uploaded (<%= @user.images.count %>)</h3>
-      <%= image_tag @user.images[@user.images.count-1].img.url(:square) %>
+      <h3>Images uploaded (<%= @user.images.count %>)</h3>
+      <ol class="images">
+        <%= render @images %>
+      </ol>
+      <%= will_paginate @images %>
     <% end %>
   </div>
 </div>

@@ -32,6 +32,12 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:img1) { FactoryGirl.create(:image, user: user, tag: "img1",
+                                      img: File.new("#{Rails.root}/app/assets/images/rails.png"),
+                                      rating: 0)  }
+    let!(:img2) { FactoryGirl.create(:image, user: user, tag: "img2",
+                                      img: File.new("#{Rails.root}/app/assets/images/rails.png"),
+                                      rating: 0)  }
 
     before { visit user_path(user) }
 
@@ -39,6 +45,12 @@ describe "User pages" do
     it { should have_content(user.email) }
     it { should have_content(user.reputation) }
     it { should have_title(user.name) }
+
+    describe "images" do
+      it { should have_content(img1.tag) }
+      it { should have_content(img2.tag) }
+      it { should have_content(user.images.count) }
+    end
   end
 
   describe "edit" do

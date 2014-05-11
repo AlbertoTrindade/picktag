@@ -200,3 +200,27 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
+
+/* images */
+
+.images {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+
+.image-tag {
+  display: block;
+}
+
+.image-rating {
+  font-size: 1em;
+  font-weight: normal;
+  color: $grayLight;
+  margin-top: 5px;
+}

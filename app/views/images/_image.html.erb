@@ -1,0 +1,11 @@
+<li>
+	<%= image_tag image.img.url(:square) %>
+    <span class="image-tag"><%= image.tag %></span>
+    <span class="image-rating"><%= "Rating: #{image.rating}" %></span>
+
+    <% if current_user?(image.user) %>
+    <%= link_to "delete", image, method: :delete,
+                                     data: { confirm: "Are you sure?" },
+                                     title: image.tag %>
+    <% end %>
+</li>
