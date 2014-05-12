@@ -39,7 +39,10 @@ describe "User pages" do
                                       img: File.new("#{Rails.root}/app/assets/images/rails.png"),
                                       rating: 0)  }
 
-    before { visit user_path(user) }
+    before do
+      sign_in user
+      visit user_path(user)
+    end
 
     it { should have_content(user.name) }
     it { should have_content(user.email) }
