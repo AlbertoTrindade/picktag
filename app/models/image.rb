@@ -15,7 +15,7 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :img, :content_type => /\Aimage\/.*\Z/
 
   def self.search(tag, page)
-  	where('tag ILIKE ?', "%#{tag}%").paginate(:per_page => 5,:page => page)
+  	where('tag ILIKE ?', "%#{tag}%").paginate(:per_page => 3,:page => page)
   end
 
 end
