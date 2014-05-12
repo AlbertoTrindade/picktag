@@ -1,0 +1,10 @@
+<% provide(:title, @image.tag) %>
+  
+  <h1>
+    <%= @image.tag %>
+  </h1>
+  <%= image_tag @image.img.url(:large) %>
+  <br />
+  <br />
+  <span class="image-author"><%= link_to @image.user.name, @image.user %></span>
+  <span class="image-rating"><%= "Rating: #{@image.rating}" %></span>

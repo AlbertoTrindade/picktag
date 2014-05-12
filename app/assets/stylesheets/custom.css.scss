@@ -213,9 +213,9 @@ input {
   }
 }
 
-
 .image-tag {
   display: block;
+  font-size: 1.1em;
 }
 
 .image-rating {
@@ -223,4 +223,13 @@ input {
   font-weight: normal;
   color: $grayLight;
   margin-top: 5px;
+}
+
+.image-author {
+  display: block;
+  font-size: 1.1em;
+}
+
+.image-info {
+  float:right
 }

@@ -1,0 +1,16 @@
+<% provide(:title, 'Search results') %>
+
+<% if @images.any? %>
+  <h1>Search results for "<%=params[:tag]%>"</h1>
+  <%= will_paginate %>
+
+  <ul class="images">
+    <% @images.each do |image| %>
+      <%= render 'images/image_searched', image: image  %>
+    <% end %>
+  </ul>
+
+  <%= will_paginate %>	
+<% else %>
+  <h1>No results for "<%=params[:tag]%>"</h1>
+<% end %>

@@ -4,10 +4,10 @@
   	Search for pictures or upload a new one!
   </h2>
    
-  <%= form_for Image.new do |f| %>
-    <%= f.text_field :tag %>
+  <%= form_tag "/search", method: "get" do %>
+    <%= text_field_tag :tag %>
     <%= link_to "Upload new image", upload_path, class: "btn btn-large btn-primary" %>  
-    <%= link_to "Search images", '#', class: "btn btn-large btn-primary" %> 
+    <%= submit_tag "Search images", class: "btn btn-large btn-primary" %> 
   <% end %>
       
  </div>

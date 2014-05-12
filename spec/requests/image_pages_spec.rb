@@ -46,4 +46,44 @@ describe "Image pages" do
       end
     end
   end
+
+  describe "search page" do
+    let!(:img1) { FactoryGirl.create(:image, user: user, tag: "img1",
+                                      img: File.new("#{Rails.root}/app/assets/images/rails.png"),
+                                      rating: 0)  }
+    let!(:img2) { FactoryGirl.create(:image, user: user, tag: "img2",
+                                      img: File.new("#{Rails.root}/app/assets/images/rails.png"),
+                                      rating: 0)  }
+
+    before do
+      sign_in user
+      visit root_path
+    end
+
+    describe "search results" do
+      before do
+        fill_in "tag", with: "img2"
+        click_button "Search images"
+      end
+
+      it { should have_title("Search results") }
+      it { should have_content(img2.tag) }
+      it { should_not have_content(img1.tag) }
+    end
+  end
+
+  describe "show image page" do
+    let!(:img) { FactoryGirl.create(:image, user: user, tag: "img",
+                                      img: File.new("#{Rails.root}/app/assets/images/rails.png"),
+                                      rating: 0)  }
+
+    before do
+      sign_in user
+      visit image_path(img)
+    end
+
+    it { should have_title(img.tag) }
+    it { should have_content(img.tag) }
+    it { should have_content(user.name) }
+  end
 end

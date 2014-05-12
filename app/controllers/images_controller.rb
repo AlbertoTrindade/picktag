@@ -2,6 +2,10 @@ class ImagesController < ApplicationController
   before_action :signed_in_user
   before_action :correct_user,   only: :destroy
 
+  def show
+    @image = Image.find(params[:id])
+  end
+
   def new
     @image = current_user.images.build
   end
@@ -15,6 +19,11 @@ class ImagesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def index 
+    redirect_to root_url if params[:tag].blank? 
+    @images = Image.search(params[:tag], params[:page])
   end
 
   def destroy
