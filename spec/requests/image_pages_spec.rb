@@ -42,7 +42,7 @@ describe "Image pages" do
       before { visit user_path(user) }
 
       it "should delete a image" do
-        expect { click_link "delete" }.to change(Image, :count).by(-1)
+        expect { click_link "Delete" }.to change(Image, :count).by(-1)
       end
     end
   end

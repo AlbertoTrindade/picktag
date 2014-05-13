@@ -2,10 +2,11 @@
 	<%= link_to (image_tag image.img.url(:medium)), image %>
 	<div class = "image-info">
 	    <span class="image-tag"><%= link_to image.tag, :controller => "images", :action => "index", :tag => image.tag %></span>
-	    <span class="image-rating"><%= "Rating: #{image.rating}" %></span>
+	    <% image_rating = number_with_precision(image.rating, precision: 1) %>
+	    <span class="image-rating"><%= "Rating: #{image_rating}" %></span>
 
 	    <% if current_user?(image.user) %>
-	    <%= link_to "delete", image, method: :delete,
+	    <%= link_to "Delete", image, method: :delete,
 	                                     data: { confirm: "Are you sure?" },
 	                                     title: image.tag %>
 	    <% end %>

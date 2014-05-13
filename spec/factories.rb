@@ -13,4 +13,10 @@ FactoryGirl.define do
     rating 0
     user
   end
+
+  factory :feedback do
+    relevant true
+    user
+    image
+  end
 end

@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
   belongs_to :user
-  default_scope -> { order('created_at DESC') }
+  has_many :feedbacks, dependent: :destroy
+
   validates :tag, presence: true, length: { maximum: 30 }
   validates :user_id, presence: true
   validates :img, presence: true
@@ -15,7 +16,15 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :img, :content_type => /\Aimage\/.*\Z/
 
   def self.search(tag, page)
-  	where('tag ILIKE ?', "%#{tag}%").paginate(:per_page => 3,:page => page)
+  	Image.joins(:user).order('rating DESC, users.reputation DESC').where('tag ILIKE ?', "%#{tag}%").paginate(:per_page => 3,:page => page)
   end
 
+  def update_rating
+    relevant_count = Feedback.where(image_id: self.id, relevant: true).count
+    irrelevant_count = Feedback.where(image_id: self.id, relevant: false).count
+
+    new_rating = relevant_count.to_f/(relevant_count + irrelevant_count)
+    new_rating = new_rating*10
+    self.update_attribute(:rating, new_rating)
+  end
 end

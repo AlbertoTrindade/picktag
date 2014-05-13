@@ -7,4 +7,5 @@
   <br />
   <br />
   <span class="image-author"><%= link_to @image.user.name, @image.user %></span>
-  <span class="image-rating"><%= "Rating: #{@image.rating}" %></span>
+  <% image_rating = number_with_precision(@image.rating, precision: 1) %>
+  <span class="image-rating"><%= "Rating: #{image_rating}" %></span>

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :images, dependent: :destroy
+  has_many :feedbacks, dependent: :destroy
 
   before_save { email.downcase! }
   before_create :create_remember_token
@@ -22,6 +23,23 @@ class User < ActiveRecord::Base
 
   def User.hash(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def update_reputation
+    relevant_count = 0
+    irrelevant_count = 0
+
+    self.images.each do |i|  
+      relevant_count = relevant_count + Feedback.where(image_id: i.id, relevant: true).count 
+    end
+
+    self.images.each do |i|  
+      irrelevant_count = irrelevant_count + Feedback.where(image_id: i.id, relevant: false).count 
+    end
+
+    new_reputation = relevant_count.to_f/(relevant_count + irrelevant_count)
+    new_reputation = new_reputation*10
+    self.update_attribute(:reputation, new_reputation)
   end
 
   private

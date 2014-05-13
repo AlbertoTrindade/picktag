@@ -6,7 +6,8 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
         <span class="profile-info"><%= "Email: " + @user.email %></span>
-      	<span class="profile-info"><%= "Reputation: #{@user.reputation}" %></span>
+        <% user_reputation = number_with_precision(@user.reputation, precision: 1) %>
+      	<span class="profile-info"><%= "Reputation: #{user_reputation}" %></span>
       </h1>
     </section>
   </aside>

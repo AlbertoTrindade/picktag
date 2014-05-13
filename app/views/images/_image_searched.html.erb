@@ -3,6 +3,23 @@
 	<div class = "image-info">
 		<span class="image-author"><%= link_to image.user.name, image.user %></span>
 		<span class="image-tag"><%= link_to image.tag, :controller => "images", :action => "index", :tag => image.tag %></span>
-    	<span class="image-rating"><%= "Rating: #{image.rating}" %></span>
+		<% image_rating = number_with_precision(image.rating, precision: 1) %>
+    	<span class="image-rating"><%= "Rating: #{image_rating}" %></span>
+	</div>
+	<div class = "image-feedback">
+		<% if current_user.feedbacks.find_by(image_id: image.id) %>
+			<h2>You have already given<br /> feedback for this image</h2>
+		<% else %>	
+			<% if image.user_id != current_user.id %>		
+				<h2>Is this image relevant?</h2>
+				<%= form_for(current_user.feedbacks.build) do |f| %>
+				<%= f.hidden_field :image_id, value: image.id %>
+			    <%= f.submit "Yes", class: "btn btn-large btn-primary" %> 
+			    <%= f.submit "No", class: "btn btn-large btn-primary" %> 
+			    <% end %>
+			<% else %>
+				<h2>You have uploaded this image</h2>
+			<% end %>
+		<% end %>
 	</div>
 </li>

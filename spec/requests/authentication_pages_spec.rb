@@ -98,6 +98,14 @@ describe "Authentication" do
           before { delete image_path(FactoryGirl.create(:image)) }
           specify { expect(response).to redirect_to(signin_path) }
         end
+      end
+
+      describe "in the Feedback controller" do
+
+        describe "submitting to the create action" do
+          before { post feedbacks_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
       end   
     end
 
